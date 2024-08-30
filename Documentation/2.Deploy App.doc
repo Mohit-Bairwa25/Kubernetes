@@ -1,0 +1,55 @@
+Taking an Offical Image from Docker Hub
+
+Syntax
+•kubectl create deployment my-nginx --image=Image Name From Docker Hub:latest
+•kubectl create deployment my-nginx --image=nginx:latest
+
+You will Get
+deployment.apps/my-nginx created
+
+•kubectl get deployments
+NAME       READY   UP-TO-DATE   AVAILABLE   AGE
+my-nginx   0/1     1            0           72s
+
+•kubectl get pods
+NAME                       READY   STATUS             RESTARTS   AGE
+my-nginx-d5b654986-ltb8c   0/1     ImagePullBackOff   0          2m16s
+
+•minikube dashboard
+
+Sevice Object Port Binding
+To Listen Inside The Docker Container
+•kubectl expose deployment my-nginx --port=80 --type=LoadBalancer
+
+if you get this 
+The Service "my-nginx" is invalid: spec.type: Unsupported value: "Loadbalancer": supported values: "ClusterIP", "ExternalName", "LoadBalancer", "NodePort"
+
+Which means commands are case Sensitive
+
+Correct Commands give this output
+service/my-nginx exposed
+
+To Check this 
+•kubectl get services
+
+this is output
+kubernetes   ClusterIP      10.96.0.1        <none>        443/TCP        27h
+my-nginx     LoadBalancer   10.101.246.171   <pending>     80:31135/TCP   2m30s
+
+Now to Tell Minikube about services
+•minikube service my-nginx
+
+this is Correct output
+|-----------|----------|-------------|---------------------------|
+| NAMESPACE |   NAME   | TARGET PORT |            URL            |
+|-----------|----------|-------------|---------------------------|
+| default   | my-nginx |          80 | http://192.168.49.2:31135 |
+|-----------|----------|-------------|---------------------------|
+* Starting tunnel for service my-nginx.
+|-----------|----------|-------------|------------------------|
+| NAMESPACE |   NAME   | TARGET PORT |          URL           |
+|-----------|----------|-------------|------------------------|
+| default   | my-nginx |             | http://127.0.0.1:55010 |
+|-----------|----------|-------------|------------------------|
+* Opening service default/my-nginx in default browser...
+! Because you are using a Docker driver on windows, the terminal needs to be open to run it.

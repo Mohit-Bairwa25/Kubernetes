@@ -1,0 +1,33 @@
+•npx create-react-app testapp
+
+We suggest that you begin by typing:
+
+•cd testapp
+•npm start
+
+To See Changes Reflect without Restart
+•npm install --save-dev nodemon
+
+Update package.json: Add a script to your package.json to use Nodemon:
+
+"scripts": {
+  "start": "react-scripts start",
+  "dev": "nodemon --watch src --exec \"npm start\""
+}
+
+Run the Development Server with Nodemon:
+•npm run dev
+
+Creating Docker File
+
+Go to DockerHub Signin
+Look in Repository
+
+docker push mohitbairwa25/react-docker:tagname
+mohitbairwa25/react-docker
+
+•docker build -t mohitbairwa25/react-docker:02 .
+•docker images
+•docker login
+•docker push mohitbairwa25/react-docker:02
+

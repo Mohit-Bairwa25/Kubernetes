@@ -1,0 +1,12 @@
+minikube start/delete
+minikube status
+minikube dashboard
+
+kubectl create deployment my-app --image=link
+kubectl get deployments
+kubectl get pods
+kubectl delete deployment my-app
+
+kubectl expose deployment my-app --type=LoadBalancer --port=80
+minikube service my-app
+kubectl get services

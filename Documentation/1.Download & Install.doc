@@ -1,0 +1,64 @@
+Go to Kubernaties Website, Instal Via chocolatey
+https://kubernetes.io/docs/tasks/tools/install-kubectl-windows/#install-nonstandard-package-tools
+
+https://chocolatey.org/install
+Select Individual
+From the Above Link Copy this command
+
+Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+
+And Run it in PowerShell Run as Administrator
+
+Noe Run Command Promt as an Administrator
+
+•choco install Kubernaties-cli
+
+Verify Install
+•kubectl version --client
+
+Now Navigate to your home directory:
+# If you're using cmd.exe, run: 
+•cd %USERPROFILE%
+cd ~
+
+Now Create the .kube directory:
+mkdir .kube
+
+Now Via File Explorer Go to C:\Users\mohit\.kube
+Create a Empty text file Name: config
+
+Now Install minikube
+https://minikube.sigs.k8s.io/docs/start/?arch=%2Fwindows%2Fx86-64%2Fstable%2Fchocolatey
+
+Run Command Promt as Administrator
+•choco install minikube
+
+Now Start your cluster Bypass
+•minikube start
+
+Now An Error Can Occur 
+* Automatically selected the hyperv driver
+* Failed to start hyperv VM. Running "minikube delete" may fix it: creating host: create: precreate: Hyper-V PowerShell Module is not available
+
+Now Only Hyper V Works on Windows 10 Pro
+
+You Can Start minikube via my methods:- Hyper V, Docker, Virtual Box
+So Try this
+•minikube delete
+This will Delete Previously Created Files
+
+•minikube start --driver=docker
+
+Then Check Status Via
+•minikube status
+
+Check Docker version
+•docker --version
+
+To Check minikube cluster is Running inside docker
+•docker ps
+
+This will Re-Direct You to The Minikube Dashboard Website
+•minikube dashboard
+
+Here Go to Cluster/Node
