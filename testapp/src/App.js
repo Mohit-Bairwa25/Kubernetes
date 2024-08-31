@@ -7,7 +7,8 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to Reload.
+          This is Kubernaties Demo Project Version 5.69
+          To Check K8s Update Rollouts
         </p>
         <a
           className="App-link"

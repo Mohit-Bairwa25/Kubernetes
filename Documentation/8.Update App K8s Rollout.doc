@@ -1,0 +1,3 @@
+To Buid This New Image
+•docker build -t mohitbairwa25/react-docker:05 .
+•docker push mohitbairwa25/react-docker:05

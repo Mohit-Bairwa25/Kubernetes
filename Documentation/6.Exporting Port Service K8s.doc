@@ -1,0 +1,30 @@
+•kubectl get deployments
+NAME        READY   UP-TO-DATE   AVAILABLE   AGE
+my-webapp   1/1     1            1           108m
+
+To Expose Service
+•kubectl expose deployments my-webapp --type=LoadBalancer --port=3000
+service/my-webapp exposed
+
+To Get Services
+•kubectl get services
+NAME         TYPE           CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
+kubernetes   ClusterIP      10.96.0.1        <none>        443/TCP          2d4h
+my-nginx     LoadBalancer   10.101.246.171   <pending>     80:31135/TCP     24h
+my-webapp    LoadBalancer   10.104.189.105   <pending>     3000:31014/TCP   56s
+
+•minikube service my-webapp
+|-----------|-----------|-------------|---------------------------|
+| NAMESPACE |   NAME    | TARGET PORT |            URL            |
+|-----------|-----------|-------------|---------------------------|
+| default   | my-webapp |        3000 | http://192.168.49.2:31014 |
+|-----------|-----------|-------------|---------------------------|
+🏃  Starting tunnel for service my-webapp.
+|-----------|-----------|-------------|------------------------|
+| NAMESPACE |   NAME    | TARGET PORT |          URL           |
+|-----------|-----------|-------------|------------------------|
+| default   | my-webapp |             | http://127.0.0.1:56887 |
+|-----------|-----------|-------------|------------------------|
+🎉  Opening service default/my-webapp in default browser...
+❗  Because you are using a Docker driver on windows, the terminal needs to be open to run it.
+

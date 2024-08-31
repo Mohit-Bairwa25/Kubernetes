@@ -1,0 +1,34 @@
+First Check Your Status is Running
+•minikube status
+
+If it is Not Running Then
+•minikube start
+
+For Deployment
+•kubectl create deployment my-webapp --image=REPOSITORY NAME:VERSION NAME/No
+•kubectl create deployment my-webapp --image=mohitbairwa25/react-docker:02
+deployment.apps/my-webapp created
+
+To Check Deployment
+•kubectl get deployments
+NAME        READY   UP-TO-DATE   AVAILABLE   AGE
+my-nginx    1/1     1            1           24h
+my-webapp   0/1     1            0           61s
+
+•kubectl get pods
+NAME                         READY   STATUS              RESTARTS        AGE
+my-nginx-d5b654986-ltb8c     1/1     Running             1 (5m39s ago)   24h
+my-webapp-6f84bc6fff-schzd   0/1     ContainerCreating   0               2m5s
+
+To Delete a Deployment
+•kubectl delete deployment NAME
+•kubectl delete deployment my-nginx
+
+•minikube dashboard
+
+To View Logs
+•kubectl logs PODNAME
+•kubectl logs my-webapp-6f84bc6fff-schzd
+
+To Get More Information On Terminal about pods
+•kubectl describe pods
