@@ -21,3 +21,26 @@ To ReStart After Exiting
 •docker run --network my-net -p 3000:3000 --name myapp philippaul/node-mongo-db:01
 
 Approach 1:-> Run Multiple Container in same Pod
+•kubectl get deployments 
+•db-demo-app> cd ..
+•kubectl apply -f deployment-node-app.yml
+deployment.apps/my-nodedb-app created
+
+•kubectl get deployments
+NAME            READY   UP-TO-DATE   AVAILABLE   AGE
+my-nodedb-app   0/2     2            0           67s
+
+•minikube dashboard
+
+•kubectl apply -f service-node-app.yml   
+service/service-my-nodedb-app created
+
+•minikube service service-my-nodedb-app
+
+This creates a Problem Now There are 2 Database and we have no conntrol over it in which
+Database data is stored
+
+so we chagnge replicas to 1 and then
+
+•kubectl apply -f deployment-node-app.yml
+deployment.apps/my-nodedb-app configured

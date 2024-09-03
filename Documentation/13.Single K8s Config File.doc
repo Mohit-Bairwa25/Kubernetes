@@ -1,0 +1,33 @@
+Copy all service-node-app.yaml file data and paste it in end of deployment-node-app.yaml file
+with  Empty Line --- Empty Line
+
+No to Deploy file
+•kubectl apply -f deployment-node-app.yml
+
+Approach 2:-> Multiple Containers in Seprate PODS
+Changes in node project (dynamic host and port for database URL)
+Building image & pushing image with 02 version
+YAML config requirement explanation
+First create deployment and service config for MONGO APP so we will be having service name
+Now create deployment and service config for NODE APP and explain how to use env variables in config
+Now we will create configMAP file
+Run node-app deployment
+
+•cd db-demo-app
+•docker build -t philippaul/node-mongo-db:03 .
+•docker push mohitbairwa25/react-docker:02
+
+•db-demo-app> cd ..
+•kubectl get all
+•kubectl apply -f mongo-db.yml
+deployment.apps/mongo-app created
+service/service-mongodb created
+
+Config Map in K8s
+
+•kubectl apply -f mongo-config.yml
+configmap/mongo-config created
+
+•kubectl apply -f node-app.yml
+deployment.apps/node-app created
+service/service-node-app created

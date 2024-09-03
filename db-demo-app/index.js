@@ -5,9 +5,12 @@ const bodyParser = require('body-parser');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+const mongoHost = process.env.MONGO_HOST || 'localhost'
+const mongoPort = process.env.MONGO_PORT || '27107'
+
 // Connect to MongoDB,When Running Locally Use localhost, whenrunningon docker use mongo
 // mongoose.connect('mongodb://localhost:27017/yourDatabaseName', {
-mongoose.connect('mongodb://mongo:27017/yourDatabaseName', {
+mongoose.connect(`mongodb://${mongoHost}:${mongoPort}/yourDatabaseName`, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });
