@@ -1,0 +1,65 @@
+First Create a Deployment Configuration File
+
+Create a File Name
+deployment-node-app.yml
+
+Right Now We are Creating Deployment Configuration File
+
+So Got to This Link
+https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#daemonset-v1-apps
+
+Copy Deployment v1 apps example in your .yml File
+
+•kubectl apply -f deployment-node-app.yml
+deployment.apps/my-node-app created
+
+•kubectl get deployment
+NAME          READY   UP-TO-DATE   AVAILABLE   AGE
+my-node-app   3/3     3            3           60s
+my-webapp     1/1     1            1           23h
+node--app     2/2     2            2           3h4m
+
+•kubectl get pods      
+NAME                           READY   STATUS    RESTARTS       AGE
+my-node-app-6dfc8899c7-2fvqd   1/1     Running   0              2m12s        
+my-node-app-6dfc8899c7-jwgq7   1/1     Running   0              2m12s        
+my-node-app-6dfc8899c7-k7kjg   1/1     Running   0              2m12s        
+my-webapp-6f84bc6fff-5xvph     1/1     Running   0              3h33m        
+node--app-68cc4cc679-4qbw6     1/1     Running   4 (131m ago)   136m
+node--app-68cc4cc679-8mrrj     1/1     Running   4 (131m ago)   136m
+
+To UpScale or Down Scale Just Edit File & Re-Run the Command
+•kubectl apply -f deployment-node-app.yml
+
+Now To Create a Servce File
+So Got to This Link
+https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#daemonset-v1-apps
+
+Copy the Service v1 core to service-node-app.yml
+•kubectl get services
+NAME         TYPE           CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
+kubernetes   ClusterIP      10.96.0.1        <none>        443/TCP          3d2h
+my-nginx     LoadBalancer   10.101.246.171   <pending>     80:31135/TCP     46h
+my-webapp    LoadBalancer   10.104.189.105   <pending>     3000:31014/TCP   21h
+node--app    LoadBalancer   10.99.36.91      <pending>     3000:31317/TCP  3h11m
+
+•kubectl delete service my-nginx my-webapp node--app
+service "my-nginx" deleted
+service "my-webapp" deleted
+service "node--app" deleted
+
+•kubectl apply -f service-node-app.yml
+service/service-my-node-app created
+
+•minikube service service-my-node-app
+
+•kubectl delete deployments --all
+OR
+•kubectl delete deployment my-node-app my-webapp node--app
+
+•kubectl get deployment
+No resources found in default namespace.
+
+
+
+

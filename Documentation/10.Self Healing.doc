@@ -1,0 +1,23 @@
+PS D:\HDD Data\A Disk\CODE\Visual Studio Code\GitHub\Kubernetes> cd express-demo/
+PS D:\HDD Data\A Disk\CODE\Visual Studio Code\GitHub\Kubernetes\express-demo> npm install
+•node index.js
+
+philippaul/node-demo-app IT IS A PUBLIC REPO
+
+•kubectl create deployment node--app --image=philippaul/node-demo-app:01
+deployment.apps/node--app created
+
+•kubectl get deployments
+NAME        READY   UP-TO-DATE   AVAILABLE   AGE
+my-webapp   1/1     1            1           20h
+node--app   0/1     1            0           62s
+•kubectl get pods 
+NAME                         READY   STATUS              RESTARTS   AGE
+my-webapp-6f84bc6fff-5xvph   1/1     Running             0          30m
+node--app-68cc4cc679-tlxxh   0/1     ContainerCreating   0          2m41s
+
+To Expose This Service
+•kubectl expose deployment node--app --type=LoadBalancer --port=3000
+service/node--app exposed
+
+•minikube service node--app

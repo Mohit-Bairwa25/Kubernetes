@@ -1,0 +1,25 @@
+If You try to Point it at Image Which is not Present like
+
+There are three version latest,02,05
+So We try 01
+
+PS D:\HDD Data\A Disk\CODE\Visual Studio Code\GitHub\Kubernetes> kubectl set image deployments my-webapp react-docker=mohitbairwa25/react-docker:01
+deployment.apps/my-webapp image updated
+PS D:\HDD Data\A Disk\CODE\Visual Studio Code\GitHub\Kubernetes> kubectl get pods
+NAME                         READY   STATUS         RESTARTS   AGE
+my-webapp-587b69f54b-zx575   0/1     ErrImagePull   0          9s
+my-webapp-59d75bf99d-qzn8j   1/1     Running        0          25m
+PS D:\HDD Data\A Disk\CODE\Visual Studio Code\GitHub\Kubernetes> kubectl get pods
+NAME                         READY   STATUS             RESTARTS   AGE
+my-webapp-587b69f54b-zx575   0/1     ImagePullBackOff   0          53s
+my-webapp-59d75bf99d-qzn8j   1/1     Running            0          26m
+
+To Roll Out To Previous Image
+PS D:\HDD Data\A Disk\CODE\Visual Studio Code\GitHub\Kubernetes> kubectl rollout status deployment/my-webapp    
+deployment "my-webapp" successfully rolled out
+PS D:\HDD Data\A Disk\CODE\Visual Studio Code\GitHub\Kubernetes> kubectl rollout undo deployment/my-webapp  
+deployment.apps/my-webapp rolled back
+PS D:\HDD Data\A Disk\CODE\Visual Studio Code\GitHub\Kubernetes> kubectl get pods
+NAME                         READY   STATUS             RESTARTS   AGE
+my-webapp-587b69f54b-pl84z   0/1     ImagePullBackOff   0          84s
+my-webapp-59d75bf99d-qzn8j   1/1     Running            0          42m

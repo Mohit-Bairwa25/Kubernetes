@@ -1,3 +1,31 @@
 To Buid This New Image
 •docker build -t mohitbairwa25/react-docker:05 .
 •docker push mohitbairwa25/react-docker:05
+
+•kubectl get deployments
+NAME        READY   UP-TO-DATE   AVAILABLE   AGE
+my-webapp   1/1     1            1           18h
+•kubectl get pods       
+NAME                         READY   STATUS    RESTARTS   AGE
+my-webapp-6f84bc6fff-schzd   1/1     Running   0          18•
+
+•minikube dashboard
+
+To Update Website with Zero Downtime we have to point it to new Image
+Go pods-> Containers in minikube dashboard to know CONTAINER_NAME
+
+•kubectl set image deployments DEPLOYMENT_NAME CONTAINER_NAME=NEW_IMAGE:VERSION
+
+•kubectl set image deployments my-webapp react-docker=mohitbairwa25/react-docker:05
+deployment.apps/my-webapp image updated
+
+•kubectl get pods
+•kubectl get services
+•minikube service my-webapp
+
+To Roll Back/ Go To Previous Version
+•kubectl set image deployments my-webapp react-docker=mohitbairwa25/react-docker:02
+•kubectl get pods
+•minikube service my-webapp
+
+

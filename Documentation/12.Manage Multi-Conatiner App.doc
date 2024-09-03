@@ -1,0 +1,23 @@
+• cd db-demo-app
+•docker run -p 27017:27017 -d --name mongodb mongo
+•npm install
+•node index.js
+
+•docker ps -a
+
+•docker pull philippaul/node-mongo-db:01
+•docker network create my-net
+
+To Run MongoDb:
+•docker run -d -p 27017:27017 --network my-net --name mongo mongo
+
+To Run our Node App:
+•docker run --network my-net -p 3000:3000 --name myapp philippaul/node-mongo-db:01
+
+To ReStart After Exiting
+•docker stop $(docker ps -aq)
+•docker rm $(docker ps -aq)
+•docker run -d -p 27017:27017 --network my-net --name mongo mongo
+•docker run --network my-net -p 3000:3000 --name myapp philippaul/node-mongo-db:01
+
+Approach 1:-> Run Multiple Container in same Pod

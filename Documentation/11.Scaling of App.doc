@@ -1,0 +1,27 @@
+To Scale Your App Replica with Zero Downtime
+•kubectl scale deployments APP NAME --replicas=No OF REPLICAS
+•kubectl scale deployments node--app --replicas=4
+deployment.apps/node--app scaled
+
+•kubectl get pods
+NAME                         READY   STATUS    RESTARTS       AGE
+my-webapp-6f84bc6fff-5xvph   1/1     Running   0              78m
+node--app-68cc4cc679-4qbw6   1/1     Running   0              98s
+node--app-68cc4cc679-8mrrj   1/1     Running   0              98s
+node--app-68cc4cc679-tlxxh   1/1     Running   2 (9m7s ago)   50m
+node--app-68cc4cc679-vz568   1/1     Running   0              98s
+
+After Doing Mutliple Exits
+•kubectl get pods
+NAME                         READY   STATUS    RESTARTS      AGE
+my-webapp-6f84bc6fff-5xvph   1/1     Running   0             83m
+node--app-68cc4cc679-4qbw6   1/1     Running   4 (67s ago)   6m11s
+node--app-68cc4cc679-8mrrj   1/1     Running   4 (63s ago)   6m11s
+node--app-68cc4cc679-tlxxh   1/1     Running   5 (66s ago)   54m
+node--app-68cc4cc679-vz568   1/1     Running   3 (65s ago)   6m11s
+
+To Downscale your app
+•kubectl scale deployments node--app --replicas=2
+deployment.apps/node--app scaled
+
+•kubectl get pods
