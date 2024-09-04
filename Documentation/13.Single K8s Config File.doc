@@ -31,3 +31,5 @@ configmap/mongo-config created
 •kubectl apply -f node-app.yml
 deployment.apps/node-app created
 service/service-node-app created
+
+•minikube service service-node-app
